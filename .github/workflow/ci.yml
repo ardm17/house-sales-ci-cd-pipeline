@@ -1,0 +1,31 @@
+name: CI Pipeline for  House Sales
+
+on:
+  push:
+    branches:
+      -main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      - name: Install Dependencies
+        run: make install
+
+      - name: Train Model
+        run: make train
+
+      -name: Evaluate Model
+        run: make eval

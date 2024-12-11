@@ -1,7 +1,7 @@
 import gradio as gr
 import skops.io as sio
 
-# Attempt to load the moddel, catching the TypeError
+# Attempt to load the model, catching the TypeError
 try:
     model = sio.load("Model/house_rf_model.skops", trusted=[])
 except TypeError as e:
